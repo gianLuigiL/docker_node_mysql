@@ -1,0 +1,26 @@
+version: "3"
+services: 
+    node :
+        build: .
+        volumes: 
+            - ./:/user/src/node
+        restart: always
+        ports:
+            - 5000:5000
+        command: npm run dev
+    mysql:
+        image: mysql:5.7
+        restart: always
+        environment:
+            MYSQL_DATABASE: 'main'
+            MYSQL_USER: 'example'
+            MYSQL_PASSWORD: 'example'
+            MYSQL_ROOT_PASSWORD: 'example_root'
+        ports:
+            - '3306:3306'
+        expose:
+            - '3306'
+        volumes:
+            - mysql:/var/lib/mysql
+volumes:
+    mysql:
