@@ -6,8 +6,8 @@
   "scripts": {
     "docker:build": "docker-compose build",
     "docker:start": "docker-compose up",
-    "dev": "ENV=dev nodemon src/index.js",
-    "prod": "ENV=prod node src//index.js",
+    "dev": "cross-env ENV=dev PORT=5000 nodemon src/index.js",
+    "prod": "cross-env ENV=prod node src//index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -19,5 +19,7 @@
     "nodemon": "^2.0.3",
     "reflect-metadata": "^0.1.13"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  }
 }
